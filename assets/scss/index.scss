@@ -1,3 +1,7 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
 html,
 body,
 #app {
@@ -5,6 +9,7 @@ body,
   padding: 0;
   overflow: hidden;
 }
+
 
 html.dark {
   background: #222;
