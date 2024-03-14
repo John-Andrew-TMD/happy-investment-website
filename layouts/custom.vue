@@ -61,26 +61,19 @@
             <div class="title">{{ item.title }}</div>
             <ul>
               <li v-for="(_item, _index) in item.list" :key="_index">
-                <span
-                  v-if="item.jumpTo == 'product'"
-                  class="cur-click"
-                  @click="jumpToProduct(_item)"
-                  >{{ _item }}</span
-                >
-                <span
+                <span class="cur-click" :href="_item.link">{{
+                  _item.label
+                }}</span>
+                <!-- <span
                   v-else-if="item.jumpTo == 'service'"
                   class="cur-click"
                   @click="jumpToService(_item)"
                   >{{ _item }}</span
                 >
-                <span v-else>{{ _item }}</span>
+                <span v-else>{{ _item }}</span> -->
               </li>
             </ul>
           </div>
-        </div>
-        <div class="classify" v-if="classifyList[2].visible">
-          <div class="title">官方微信</div>
-          <img :src="weChatImg" />
         </div>
       </div>
     </footer>
@@ -104,33 +97,47 @@ const route = useRoute();
 const activeIndex = ref("index");
 const classifyList = ref([
   {
-    title: "热门产品",
-    jumpTo: "product",
+    title: "全国分站",
     list: [
-      "工业互联网安全监测与态势感知平台",
-      "IDCISP信息安全数据核验系统",
-      "备案信息管理系统",
-      "互联网资源云平台",
-      "互联网诈骗防范与拦截系统",
+      { label: "北京", link: "http://example.com/beijing" },
+      { label: "天津", link: "http://example.com/tianjin" },
+      { label: "河北", link: "http://example.com/hebei" },
+      // 其他省份...
+      { label: "京津冀", link: "http://example.com/jingjinji" },
     ],
     visible: true,
   },
   {
-    title: "热门服务",
-    jumpTo: "service",
+    title: "海外分站",
     list: [
-      "工业互联网安全监测与态势感知平台",
-      "IDCISP信息安全数据核验系统",
-      "备案信息管理系统",
-      "互联网资源云平台",
-      "互联网诈骗防范与拦截系统",
+      { label: "越南", link: "http://example.com/vietnam" },
+      { label: "老挝", link: "http://example.com/laos" },
+      { label: "泰国", link: "http://example.com/thailand" },
+      // 其他国家...
+      { label: "缅甸", link: "http://example.com/myanmar" },
     ],
     visible: true,
   },
   {
-    title: "联系我们",
-    jumpTo: "",
-    list: ["咨询热线: ", "联系邮箱: "],
+    title: "厂房出租",
+    list: [
+      { label: "北京厂房出租", link: "http://example.com/beijing-rent" },
+      { label: "天津厂房出租", link: "http://example.com/tianjin-rent" },
+      { label: "上海厂房出租", link: "http://example.com/shanghai-rent" },
+      // 其他城市...
+      { label: "苏州厂房出租", link: "http://example.com/suzhou-rent" },
+    ],
+    visible: true,
+  },
+  {
+    title: "友情链接",
+    list: [
+      { label: "谷川联行", link: "http://example.com/guchuan" },
+      { label: "选哪儿", link: "http://example.com/xuannaer" },
+      { label: "聪招网", link: "http://example.com/congzhao" },
+      // 其他链接...
+      { label: "满商公司网", link: "http://example.com/manshang" },
+    ],
     visible: true,
   },
 ]);
@@ -420,14 +427,11 @@ onBeforeMount(() => {
     height: 296px;
     background: #161a27;
     .box {
-      display: flex;
-      justify-content: space-between;
       max-width: 1240px;
       margin: 0 auto;
       .classify {
         color: #ffffff;
         .title {
-          margin-top: 56px;
           font-size: 18px;
           font-family: SourceHanSansCN, SourceHanSansCN-Medium;
           font-weight: 500;
@@ -439,7 +443,11 @@ onBeforeMount(() => {
         ul {
           list-style: none;
           padding: 0;
+          li + li {
+            margin-left: 10px;
+          }
           li {
+            display: inline-block;
             font-size: 12px;
             font-family: SourceHanSansCN, SourceHanSansCN-Normal;
             font-weight: normal;
