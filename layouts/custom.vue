@@ -2,12 +2,38 @@
   <div class="layout" ref="layout">
     <header class="index-header">
       <div class="bg-181819 text-color999">
-        <div class="main header-content">
+        <div class="main header-content investment-main">
           <div class="headera-left">
-            <div class="headera-phone phone-refer">手机访问</div>
-            <div class="headera-collect headera-phone">添加收藏</div>
+            <div class="headera-phone phone-refer">
+              <el-icon class="mr-5"><Iphone /></el-icon>
+              手机访问
+            </div>
+            <div class="headera-collect headera-phone">
+              <el-icon class="mr-5"><Star /></el-icon>
+              添加收藏
+            </div>
           </div>
           <div class="news-login-wrapper">
+            <div
+              class="index-navigation js-navigation"
+              @mouseover="isShow = true"
+              @mouseleave="isShow = false"
+            >
+              网站导航
+              <el-icon><CaretBottom /></el-icon>
+              <navigation :isShow="isShow" />
+            </div>
+            <a
+              href="https://yun.zhaoshang.net/"
+              target="_blank"
+              class="project-cloud"
+              >项目对接</a
+            ><a
+              href="https://tj.zhaoshang.net/topic/zsppyx"
+              target="_blank"
+              class="right-line"
+              >宣传合作</a
+            ><a href="#" class="right-line login">载体发布</a>
             <div class="news-login login-user">
               <div class="register" data-source="导航右上角">注册</div>
               <div class="header-line"></div>
@@ -17,117 +43,7 @@
         </div>
       </div>
 
-      <div class="main header-content">
-        <div class="left-cont">
-          <div class="logo" @click="router.push('/')">
-            <img
-              class="logo-img"
-              src="/images/logo.png"
-              alt="工业互联网安全公共服务平台"
-            />
-            <div class="logo-text">工业互联网安全公共服务平台</div>
-          </div>
-          <el-menu
-            :default-active="activeIndex"
-            class="menu-container"
-            mode="horizontal"
-            @select="handleSelect"
-          >
-            <el-menu-item
-              class="menu-item"
-              index="index"
-              :class="{ active: activeIndex === 'index' }"
-            >
-              首页
-            </el-menu-item>
-            <el-menu-item
-              class="menu-item"
-              index="safetyProduct"
-              :class="{ active: activeIndex === 'safetyProduct' }"
-            >
-              <el-popover
-                placement="bottom"
-                width="220"
-                trigger="hover"
-                popper-class="menus-popover"
-              >
-                <template #reference>
-                  <span class="menu-title"> 安全产品 </span>
-                </template>
-                <ul class="menu-popover-list">
-                  <li
-                    v-for="(product, index) in productDropdown"
-                    :key="product"
-                    @click="changeProduct(product)"
-                    :class="[
-                      'popover-list-item',
-                      { active: curProduct === product },
-                    ]"
-                  >
-                    <img :src="`/images/product_${index + 1}.png`" />
-                    <span>
-                      {{ product }}
-                    </span>
-                  </li>
-                </ul>
-              </el-popover>
-            </el-menu-item>
-            <el-menu-item
-              class="menu-item"
-              index="safeService"
-              :class="{ active: activeIndex === 'safeService' }"
-            >
-              <el-popover
-                placement="bottom"
-                width="220"
-                trigger="hover"
-                popper-class="menus-popover"
-              >
-                <template #reference>
-                  <span class="menu-title"> 安全服务 </span>
-                </template>
-                <ul class="menu-popover-list">
-                  <li
-                    v-for="(service, index) in serviceDropdown"
-                    :key="service"
-                    @click="changeService(service)"
-                    :class="[
-                      'popover-list-item',
-                      { active: curService === service },
-                    ]"
-                  >
-                    <img :src="`/images/server_${index + 1}.png`" />
-                    <span>
-                      {{ service }}
-                    </span>
-                  </li>
-                </ul>
-              </el-popover>
-            </el-menu-item>
-            <el-menu-item
-              class="menu-item"
-              index="policyDoc"
-              :class="{ active: activeIndex === 'policyDoc' }"
-            >
-              政策文件
-            </el-menu-item>
-          </el-menu>
-        </div>
-        <div class="operate-btns">
-          <!-- <div class="console" @click="jumpConsole">
-            <img class="logo-img" src="@/assets/images/layout/kongzhitai.png" alt="控制台" />
-            控制台
-          </div> -->
-          <div class="entrance" @click="jumpEntrance">
-            登录入口
-            <img
-              class="logo-img"
-              src="@/assets/images/layout/arrow.png"
-              alt="登录入口"
-            />
-          </div>
-        </div>
-      </div>
+      <headerContent />
     </header>
     <div class="main-container" ref="mainContianer">
       <el-config-provider :locale="zhCn">
@@ -172,6 +88,9 @@
 </template>
 
 <script setup>
+import { CaretBottom, Star, Iphone } from "@element-plus/icons-vue";
+import navigation from "./components/navigation";
+import headerContent from "./components/headerContent";
 import { ref, onBeforeMount, watch } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { useScroll } from "@vueuse/core";
@@ -218,6 +137,7 @@ const classifyList = ref([
 const layout = ref(null);
 const { x, y } = useScroll(layout);
 const isScrolled = ref(false);
+const isShow = ref(false);
 const productDropdown = ref([]);
 const curProduct = ref(user.curProduct);
 const serviceDropdown = ref([]);

@@ -10,13 +10,13 @@ export default defineNuxtConfig({
   app: {
     // head
     head: {
-      title: '工业互联网安全公共服务平台',
+      title: '快乐招商',
       meta: [
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         {
           hid: 'description',
           name: 'description',
-          content: '工业互联网安全公共服务平台',
+          content: '快乐招商',
         },
       ],
       link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],

@@ -3,7 +3,6 @@
     max-width: 475px;
     _width: 475px;
     /* overflow: hidden; */
-    position: relative;
 }
 
 a.vip-logout {
@@ -204,7 +203,6 @@ a.index-message span {
 }
 
 .navigation-header {
-    width: 60px;
     display: block;
     font-size: 14px;
     line-height: 40px;
@@ -257,13 +255,11 @@ body .center-all a:hover {
 }
 
 .index-navigation {
-    width: 60px;
     display: block;
     font-size: 14px;
     line-height: 40px;
     height: 40px;
     color: #999999;
-    position: relative;
     float: right;
     text-align: center;
     margin-left: 10px;
@@ -329,6 +325,8 @@ body .center-all a:hover {
     cursor: pointer;
     position: relative;
     padding-left: 15px;
+    display: flex;
+    align-items: center;
 }
 
 .carrier-more-btn {
