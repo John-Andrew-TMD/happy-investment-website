@@ -26,7 +26,8 @@
         />
         <span class="zhaoshang_topic">400-168-6016</span>
       </div>
-      <div class="header-ul">
+
+      <div class="header-ul" @mouseleave="isShowFold = false">
         <a href="https://yun.zhaoshang.net" target="_blank" title="项目对接">
           <span>项目对接</span>
           <p>HOT</p>
@@ -42,7 +43,6 @@
           class="header-carrier-fold"
           href="Javascript:void(0)"
           title="载体"
-          @mouseleave="isShowFold = false"
           @mouseover="isShowFold = true"
         >
           <span>载体</span>
