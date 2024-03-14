@@ -202,7 +202,6 @@ const props = defineProps({
     default: false,
   },
 });
-const isShow = ref(false);
 </script>
 
 <style lang="scss" scoped>
