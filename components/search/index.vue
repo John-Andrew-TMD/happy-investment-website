@@ -68,20 +68,16 @@
             src="https://static.zhaoshang.net/front/images/concise_index/banner_insert@2x.png"
             alt="单位新增认证"
           />
-          <ul class="company-scroll">
-            <li style="margin-top: -19.5029px">
-              丹东市振兴区经济合作发展服务中心进驻招商网络
-            </li>
-            <li style="margin-top: 0px">张掖经济技术开发区进驻招商网络</li>
-            <li style="margin-top: 0px">滁州市全椒县招商局进驻招商网络</li>
-            <li style="margin-top: 0px">三明市永安市商务局进驻招商网络</li>
-            <li style="margin-top: 0px">丹东市东港市招商局进驻招商网络</li>
-            <li style="margin-top: 0px">丹东市振安区招商局进驻招商网络</li>
-            <li style="margin-top: 0px">安康市宁陕县招商局进驻招商网络</li>
-            <li style="margin-top: 0px">九江市都昌县人民政府进驻招商网络</li>
-            <li style="margin-top: 0px">英特利高新科技产业园进驻招商网络</li>
-            <li style="margin-top: 0px">丹东振兴经济开发区进驻招商网络</li>
-          </ul>
+          <el-carousel
+            height="24px"
+            :loop="true"
+            direction="vertical"
+            :autoplay="true"
+          >
+            <el-carousel-item v-for="(item, index) in companyList" :key="index">
+              {{ item.label }}
+            </el-carousel-item>
+          </el-carousel>
         </li>
         <li class="banner-scroll-li">
           <img
@@ -89,17 +85,16 @@
             src="https://static.zhaoshang.net/front/images/concise_index/banner_dock@2x.png"
             alt="园企对接成功"
           />
-          <ul class="dock-scroll">
-            <li style="margin-top: -19.5029px">
-              巴中市平昌县人民政府成功对接了建材生产企业
-            </li>
-            <li style="margin-top: 0px">
-              秦皇岛市卢龙县投资促进中心成功对接了金属冶炼生产企业
-            </li>
-            <li style="margin-top: 0px">
-              泰州医药高新技术产业开发区成功对接了医药原料生产企业
-            </li>
-          </ul>
+          <el-carousel
+            :loop="true"
+            height="24px"
+            direction="vertical"
+            :autoplay="true"
+          >
+            <el-carousel-item v-for="(item, index) in dockList" :key="index">
+              {{ item.label }}
+            </el-carousel-item>
+          </el-carousel>
         </li>
       </ul>
     </div>
@@ -107,10 +102,35 @@
 </template>
 
 <script setup>
+import { ref, onMounted } from "vue";
+
 const bannerValue = ref(0);
 const handleChangeRadio = (item) => {
   bannerValue.value = item.value;
 };
+const companyList = ref(
+  [
+    "丹东市振兴区经济合作发展服务中心进驻招商网络",
+    "张掖经济技术开发区进驻招商网络",
+    "滁州市全椒县招商局进驻招商网络",
+    "三明市永安市商务局进驻招商网络",
+    "丹东市东港市招商局进驻招商网络",
+    "丹东市振安区招商局进驻招商网络",
+    "安康市宁陕县招商局进驻招商网络",
+    "九江市都昌县人民政府进驻招商网络",
+    "英特利高新科技产业园进驻招商网络",
+    "丹东振兴经济开发区进驻招商网络",
+  ].map((el) => ({ label: el, marginTop: 0 }))
+);
+
+const dockList = ref(
+  [
+    "巴中市平昌县人民政府成功对接了建材生产企业",
+    "秦皇岛市卢龙县投资促进中心成功对接了金属冶炼生产企业",
+    "泰州医药高新技术产业开发区成功对接了医药原料生产企业",
+  ].map((el) => ({ label: el, marginTop: 0 }))
+);
+
 const radioGroup = ref([
   {
     value: 0,
@@ -145,6 +165,15 @@ const radioGroup = ref([
 
 <style lang="scss" scoped>
 /* banner */
+@keyframes scroll {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
 .banner {
   position: relative;
   width: 100%;
@@ -338,6 +367,7 @@ const radioGroup = ref([
   width: 576px;
   height: 24px;
 }
+
 .banner-data-title {
   float: left;
   height: 16px;
