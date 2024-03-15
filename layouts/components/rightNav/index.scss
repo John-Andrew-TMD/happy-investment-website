@@ -17,7 +17,39 @@
     height: 50px;
     padding-bottom: 5px;
     cursor: pointer;
+    position: relative;
     box-sizing: content-box;
+
+    .tab-content {
+        width: 284px;
+        border-radius: 2px;
+        background-color: #676E8B;
+        box-shadow: 2px 6px 20px 0px rgba(171, 177, 181, 0.3);
+        position: absolute;
+        right: 60px;
+        top: 50%;
+        transform: translateY(-50%);
+        box-sizing: content-box;
+        display: none;
+
+        .fixed-quick-text {
+            position: absolute;
+            width: 100%;
+            bottom: 15px;
+            color: #333333;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 18px;
+            text-align: center;
+        }
+
+        img {
+            display: block;
+            width: 284px;
+            height: 284px;
+            margin: 0 auto;
+        }
+    }
 }
 
 .fixed-quick-tab li img,
@@ -37,6 +69,10 @@
 .fixed-quick-tab li:hover i {
     background: #d50000;
     color: #fff
+}
+
+.fixed-quick-tab li:hover .tab-content {
+    display: block;
 }
 
 .fixed-quick-tab li .fixed-quick-default {
