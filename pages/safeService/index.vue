@@ -9,19 +9,18 @@
   <NuxtLayout name="custom">
     <div class="safe-service">
       <Banner :describes="description"></Banner>
-      <div class="service-advantage"
-           v-if="secondTypeList.includes(9)">
+      <div class="service-advantage" v-if="secondTypeList.includes(9)">
         <div class="title">服务优势</div>
         <div class="advantage-box">
           <div class="cards">
-            <div class="item"
-                 v-for="(item, index) in serviceAdvantageList"
-                 :key="index">
-              <img :src="item.imgPath"
-                   alt="">
+            <div
+              class="item"
+              v-for="(item, index) in serviceAdvantageList"
+              :key="index"
+            >
+              <img :src="item.imgPath" alt="" />
               <div class="serviceName">{{ item.name }}</div>
-              <el-tooltip placement="bottom"
-                          effect="light">
+              <el-tooltip placement="bottom" effect="light">
                 <template #content>
                   <div v-html="getDescContent(item.introduceDesc)"></div>
                 </template>
@@ -31,19 +30,18 @@
           </div>
         </div>
       </div>
-      <div class="core-competence"
-           v-if="secondTypeList.includes(10)">
+      <div class="core-competence" v-if="secondTypeList.includes(10)">
         <div class="title">核心能力</div>
         <div class="core-box">
           <div class="cards">
-            <div class="item"
-                 v-for="(item, index) in mainAbilityList"
-                 :key="index">
-              <img :src="item.imgPath"
-                   alt="">
+            <div
+              class="item"
+              v-for="(item, index) in mainAbilityList"
+              :key="index"
+            >
+              <img :src="item.imgPath" alt="" />
               <div class="serviceName">{{ item.name }}</div>
-              <el-tooltip placement="bottom"
-                          effect="light">
+              <el-tooltip placement="bottom" effect="light">
                 <template #content>
                   <div v-html="getDescContent(item.introduceDesc)"></div>
                 </template>
@@ -58,27 +56,28 @@
 </template>
 
 <script setup>
-import { reactive, computed } from "vue"
-import { useState } from './hooks'
+import { reactive, computed } from "vue";
+import { useState } from "./hooks";
 
-const { description, serviceAdvantageList, mainAbilityList, secondTypeList } = useState()
+const { description, serviceAdvantageList, mainAbilityList, secondTypeList } =
+  useState();
 
 definePageMeta({
   layout: "custom",
-})
+});
 
 const getDescContent = computed(() => {
   return (content) => {
-    let newStr = ''
+    let newStr = "";
     for (let i = 0; i < content.length; i++) {
-      newStr += content[i]
+      newStr += content[i];
       if ((i + 1) % 30 === 0) {
-        newStr += '<br />'
+        newStr += "<br />";
       }
     }
-    return newStr
-  }
-})
+    return newStr;
+  };
+});
 </script>
 <style lang="scss" scoped>
 .safe-service {

@@ -1,20 +1,17 @@
 <template>
   <NuxtLayout name="custom">
     <div class="page-home">
-      <Banner :describes="description"></Banner>
+      <Search></Search>
       <div class="hot-product">
         <div class="title">热门产品</div>
         <div class="cards">
           <div class="card">
-            <div class="item"
-                 v-for="(item, index) in productData"
-                 :key="index">
-              <img :src="item.imgPath"
-                   alt="">
-              <div class="productName"
-                   @click="jumpToProduct(item.name)">{{ item.name }}</div>
-              <el-tooltip placement="bottom"
-                          effect="light">
+            <div class="item" v-for="(item, index) in productData" :key="index">
+              <img :src="item.imgPath" alt="" />
+              <div class="productName" @click="jumpToProduct(item.name)">
+                {{ item.name }}
+              </div>
+              <el-tooltip placement="bottom" effect="light">
                 <template #content>
                   <div v-html="getDescContent(item.introduceDesc)"></div>
                 </template>
@@ -28,17 +25,14 @@
         <div class="title">热门服务</div>
         <div class="cards">
           <div class="card">
-            <div class="item"
-                 v-for="(item, index) in serviceData"
-                 :key="index">
+            <div class="item" v-for="(item, index) in serviceData" :key="index">
               <div class="top">
-                <img :src="item.imgPath"
-                     alt="">
-                <div class="serviceName"
-                     @click="jumpToService(item.name)">{{ item.name }}</div>
+                <img :src="item.imgPath" alt="" />
+                <div class="serviceName" @click="jumpToService(item.name)">
+                  {{ item.name }}
+                </div>
               </div>
-              <el-tooltip placement="bottom"
-                          effect="light">
+              <el-tooltip placement="bottom" effect="light">
                 <template #content>
                   <div v-html="getDescContent(item.introduceDesc)"></div>
                 </template>
@@ -48,8 +42,7 @@
           </div>
         </div>
       </div>
-      <div v-if="clientCaseImg"
-           class="customer-case">
+      <div v-if="clientCaseImg" class="customer-case">
         <div class="title">客户案例</div>
         <img :src="clientCaseImg" />
       </div>
@@ -58,26 +51,33 @@
 </template>
 
 <script setup>
-import { reactive, computed } from "vue"
-import { useState } from './hooks'
-const { description, productData, serviceData, clientCaseImg, jumpToProduct, jumpToService } = useState()
+import { reactive, computed } from "vue";
+import { useState } from "./hooks";
+const {
+  description,
+  productData,
+  serviceData,
+  clientCaseImg,
+  jumpToProduct,
+  jumpToService,
+} = useState();
 
 definePageMeta({
   layout: "custom",
-})
+});
 
 const getDescContent = computed(() => {
   return (content) => {
-    let newStr = ''
+    let newStr = "";
     for (let i = 0; i < content.length; i++) {
-      newStr += content[i]
+      newStr += content[i];
       if ((i + 1) % 30 === 0) {
-        newStr += '<br />'
+        newStr += "<br />";
       }
     }
-    return newStr
-  }
-})
+    return newStr;
+  };
+});
 </script>
 <style lang="scss" scoped>
 .title {
