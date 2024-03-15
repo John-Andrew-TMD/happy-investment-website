@@ -48,7 +48,7 @@
             </div>
           </div>
         </li>
-        <li class="feedback">
+        <li class="feedback" @click="dialogVisible = true">
           <el-icon><Box /></el-icon>
           <div class="tab-content"></div>
         </li>
@@ -94,6 +94,13 @@
       </ul>
     </div>
   </div>
+  <DynamicDialogForm
+    :dialogVisible="dialogVisible"
+    :title="title"
+    :controls="controls"
+    :handleSubmit="handleSubmit"
+    :rules="rules"
+  />
   <el-backtop
     target=".layout"
     :right="10"
@@ -105,6 +112,50 @@
 
 <script setup>
 import { Link, Memo, User, Box } from "@element-plus/icons-vue";
+const dialogVisible = ref(false);
+const title = "自定义表单";
+const handleSubmit = (formData) => {
+  console.log("提交表单", formData);
+};
+
+const handleUploadSuccess = (response, file, fileList) => {
+  console.log("上传成功", response);
+};
+
+const handleUploadError = (err, file, fileList) => {
+  console.error("上传失败", err);
+};
+const controls = {
+  input: { type: "input" },
+  textarea: { type: "textarea" },
+  select: {
+    type: "select",
+    options: [
+      { value: "1", label: "Option 1" },
+      { value: "2", label: "Option 2" },
+    ],
+  },
+  checkbox: {
+    type: "checkbox",
+    options: [
+      { value: "1", label: "Checkbox 1" },
+      { value: "2", label: "Checkbox 2" },
+    ],
+  },
+  date: { type: "date" },
+  daterange: { type: "daterange" },
+  file: {
+    type: "file",
+    action: "your-upload-url",
+    onSuccess: handleUploadSuccess,
+    onError: handleUploadError,
+  },
+  custom: { type: "CustomComponent" }, // 自定义组件
+};
+const rules = {
+  input: [{ required: true, message: "请输入内容", trigger: "blur" }],
+  select: [{ required: true, message: "请选择选项", trigger: "change" }],
+};
 </script>
 <style lang="scss" scoped>
 @import "./index.scss";
