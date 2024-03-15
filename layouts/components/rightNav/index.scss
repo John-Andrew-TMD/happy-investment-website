@@ -1,0 +1,126 @@
+.fixed-quick-menu {
+    position: fixed;
+    z-index: 998;
+    right: 0;
+    bottom: 140px;
+    width: 60px;
+}
+
+.fixed-quick-tab {
+    border-radius: 2px;
+    background-color: #ffffff;
+    box-shadow: 0px 2px 10px 0px rgba(215, 224, 230, 0.3);
+}
+
+.fixed-quick-tab li {
+    width: 60px;
+    height: 50px;
+    padding-bottom: 5px;
+    cursor: pointer;
+    box-sizing: content-box;
+}
+
+.fixed-quick-tab li img,
+.fixed-quick-tab li i {
+    width: 50px;
+    height: 50px;
+    margin: 0 auto;
+}
+
+.fixed-quick-tab li i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+}
+
+.fixed-quick-tab li:hover i {
+    background: #d50000;
+    color: #fff
+}
+
+.fixed-quick-tab li .fixed-quick-default {
+    display: block;
+}
+
+.fixed-quick-tab li .fixed-quick-active {
+    display: none;
+}
+
+.fixed-quick-tab li:hover .fixed-quick-default {
+    display: none;
+}
+
+.fixed-quick-tab li:hover .fixed-quick-active {
+    display: block;
+}
+
+.fixed-scroll-top {
+    width: 60px;
+    margin-top: 8px;
+    padding: 10px 0;
+    border-radius: 2px;
+    background: #ffffff;
+    box-shadow: 0px 2px 10px 0px rgba(215, 224, 230, 0.3);
+    cursor: pointer;
+    opacity: 0;
+    transition: all 0.5s;
+}
+
+.fixed-scroll-top img {
+    display: block;
+    width: 16px;
+    height: 10px;
+    margin: 0 auto;
+}
+
+.fixed-quick-content {
+    position: absolute;
+    bottom: -52.5px;
+    right: 80px;
+}
+
+.fixed-quick-content li {
+    display: none;
+    width: 284px;
+    border-radius: 2px;
+    background-color: #676e8b;
+    box-shadow: 2px 6px 20px 0px rgba(171, 177, 181, 0.3);
+}
+
+.fixed-quick-header {
+    width: 268px;
+    padding: 18px 0 16px 16px;
+}
+
+.fixed-quick-header h3 {
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 30px;
+}
+
+.fixed-quick-header p {
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+}
+
+.fixed-quick-content li img {
+    display: block;
+    width: 284px;
+    height: 284px;
+    margin: 0 auto;
+}
+
+.fixed-quick-content li .fixed-quick-text {
+    position: absolute;
+    width: 100%;
+    bottom: 15px;
+    color: #333333;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 18px;
+    text-align: center;
+}

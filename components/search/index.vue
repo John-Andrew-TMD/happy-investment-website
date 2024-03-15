@@ -29,7 +29,11 @@
         </li>
       </ul>
       <div class="banner-search">
-        <input type="text" name="search" placeholder="请输入产业园区名称" />
+        <input
+          type="text"
+          name="search"
+          :placeholder="currentRow.placeholder"
+        />
         <div class="banner-search-operate">
           <img
             src="https://static.zhaoshang.net/front/images/concise_index/search@2x.png"
@@ -161,6 +165,12 @@ const radioGroup = ref([
     src: "https://static.zhaoshang.net/front/images/concise_index/arrow_bottom@2x.png",
   },
 ]);
+const currentRow = computed(() => {
+  const obj = radioGroup.value.filter(
+    (el) => el.value === bannerValue.value
+  )[0];
+  return obj;
+});
 </script>
 
 <style lang="scss" scoped>

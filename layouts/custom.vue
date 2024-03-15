@@ -51,6 +51,7 @@
       </el-config-provider>
     </div>
     <footerOwner />
+    <rightNav />
   </div>
 </template>
 
@@ -58,6 +59,7 @@
 import { CaretBottom, Star, Iphone } from "@element-plus/icons-vue";
 import navigation from "./components/navigation";
 import footerOwner from "./components/footer.vue";
+import rightNav from "./components/rightNav/index.vue";
 import headerContent from "./components/headerContent";
 import { ref, onBeforeMount, watch } from "vue";
 import { useRoute, useRouter } from "vue-router";
