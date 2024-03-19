@@ -129,7 +129,7 @@ const handleUploadError = (err, file, fileList) => {
   console.error("上传失败", err);
 };
 const controls = {
-  input: { type: "input" },
+  我得: { type: "input" },
   textarea: { type: "textarea" },
   select: {
     type: "select",

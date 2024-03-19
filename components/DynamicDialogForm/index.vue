@@ -26,7 +26,7 @@
           <template v-else-if="config.type === 'checkbox'">
             <el-checkbox-group v-model="form[label]">
               <el-checkbox
-                v-for="(option, index) in config.option"
+                v-for="(option, index) in config.options"
                 :key="index"
                 :label="option.value"
                 >{{ option.label }}</el-checkbox
