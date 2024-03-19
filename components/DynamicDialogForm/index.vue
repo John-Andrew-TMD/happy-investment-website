@@ -1,5 +1,9 @@
 <template>
-  <el-dialog :visible.sync="dialogVisible" :title="title">
+  <el-dialog
+    :model-value="dialogVisible"
+    :title="title"
+    @update:modelValue="updateDialogVisible"
+  >
     <el-form ref="form" :model="form" :rules="rules" label-width="80px">
       <template v-for="(config, label) in controls" :key="label">
         <el-form-item :label="label">
@@ -72,8 +76,13 @@
 </template>
 
 <script setup>
-import { defineProps, ref } from "vue";
-
+import { defineProps, ref, defineEmits } from "vue";
+const emit = defineEmits(["update:dialogVisible"]);
+const updateDialogVisible = (value) => {
+  // Emit an 'update:visible' event to update the prop value in the parent
+  // This will ensure two-way binding behavior similar to v-model
+  emit("update:dialogVisible", value);
+};
 // Props
 const props = defineProps({
   dialogVisible: Boolean,

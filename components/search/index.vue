@@ -219,10 +219,11 @@ const currentRow = computed(() => {
   width: 520px;
   font-size: 0;
   text-align: center;
-  margin: 0 0 0 290px;
+  left: 50%;
+  transform: translateX(-73%);
   overflow: hidden;
-  *left: 50%;
-  *margin-left: -260px;
+  // *left: 50%;
+  // *margin-left: -260px;
 }
 .banner-tab li {
   display: inline-block;

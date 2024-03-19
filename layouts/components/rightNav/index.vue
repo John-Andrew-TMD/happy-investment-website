@@ -100,6 +100,7 @@
     :controls="controls"
     :handleSubmit="handleSubmit"
     :rules="rules"
+    @update:dialogVisible="updateDialogVisible"
   />
   <el-backtop
     target=".layout"
@@ -117,7 +118,9 @@ const title = "自定义表单";
 const handleSubmit = (formData) => {
   console.log("提交表单", formData);
 };
-
+const updateDialogVisible = (value) => {
+  dialogVisible.value = value;
+};
 const handleUploadSuccess = (response, file, fileList) => {
   console.log("上传成功", response);
 };
